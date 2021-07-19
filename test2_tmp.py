@@ -1,3 +1,3 @@
 import test1_tmp
 
-test1_tmp.test()
+print(test1_tmp.test(20))
