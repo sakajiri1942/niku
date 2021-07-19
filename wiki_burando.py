@@ -43,7 +43,7 @@ for l_data in list_data:
     # 沖縄が検索されて次の１週が必要なので、キーワードは即時終わりではなく次のキーワードになる。
     if key02 in l_data:
         # ループを終了させるついでに数の計算
-        z_kazu = '全国(' + str(zenkoku_usi_kazu) + ')'
+        z_kazu = '全国(' + str(zenkoku_usi_kazu)
         break
 
     if key01 in l_data:
@@ -58,7 +58,7 @@ for l_data in list_data:
 
         # 県内の牛の数を表示させる。県名＋数で置換
         tikan_moto = todouhuken + ','
-        tikan_saki = todouhuken + '(' + str(usi_kazu) + '),'
+        tikan_saki = todouhuken + '(' + str(usi_kazu)+','
         gyouall = gyouall.replace(tikan_moto, tikan_saki)
         # gyouall = gyouall+todouhuken+','+str(usi_kazu)
         # 全国の牛の数をカウント
@@ -100,8 +100,12 @@ for l_data in list_data:
         gyouall = gyouall + "," + usi
         usi_count = usi_count + 1
 
+now = datetime.date.today()
+data_y = str(now.year)
+data_m = str(now.month)
+#print(now.month)
 # アウトプットファイル名。日にちでデータを保存。月単位でよいか？
-f_name = 'nikuniku-' + str(datetime.date.today()) + '.csv'
+f_name = 'C:/xampp/htdocs/niku/'+'html_to_nikuniku-' + data_y + data_m + '.txt'
 print(all_inf)
 
 # 最後のデータで全国の牛の数を置換
@@ -109,5 +113,7 @@ all_inf = all_inf.replace('全国', z_kazu)
 f = open(f_name, 'w', encoding="cp932")
 f.writelines(all_inf)
 f.close()
+
+
 
 print("ok")
