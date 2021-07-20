@@ -17,6 +17,10 @@
 
 #CSS の4244行付近　position: relative;　を変えれば画像飛びがなくなる。
 
+# C:/xampp/htdocs/niku/niku-site/inf/ #クーロンで取得したデータを置く場所　実際はサーバー上ローカルはテスト用
+
+
+
 burand_f = 'C:/xampp/htdocs/niku/ブランド牛の各ページ情報-追加中（重要）.txt'
 
 
@@ -51,12 +55,16 @@ for l_b_data in b_data:
 
     #フォーマットをコピーして使用する。各ブランド牛毎
     format_data2 = format_data
-    format_data2 = format_data2.replace('〇キーワード',ken_inf[3])
+    format_data2 = format_data2.replace('〇キーワード',ken_inf[2])
 
+    #県名とブランド牛名を入れる
     cpmoto_data2 = cpmoto_data
-    cpmoto_data2 = cpmoto_data2.replace('〇本文', format_data2)
-    usi_mei = ken_inf[3] +' | ' +ken_inf[1]
+    usi_mei = ken_inf[2] +' | ' +ken_inf[0]
     cpmoto_data2 = cpmoto_data2.replace('〇県名', usi_mei)
+
+    #本文は、PHPではなくあらかじめクローンで取得した情報を使用する。
+    #cpmoto_data2 = cpmoto_data2.replace('〇本文', format_data2)
+
 
     bangou = str(b)
     fname_ken_kobetu = 'brand_beef_' + ken_inf[2] + '_'+ bangou +'.php'
