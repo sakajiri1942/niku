@@ -5,9 +5,19 @@ import urllib.request, urllib.error
 from bs4 import BeautifulSoup
 from numpy import array
 
+#ランキング関係のファイルを出力する
+
 #出力ファイル
 out_name = ('C:/xampp/htdocs/niku/ブランド牛のランキング.txt')
 
+
+#入力ファイル　部位のサーチ数を数える
+fname = ('C:/xampp/htdocs/niku/ブランド牛の各ページ情報-追加中（重要）.txt')
+f = open(fname, 'r',encoding='utf-8')
+bui_data = f.readlines()
+f.close()
+
+#入力ファイル　ブランド牛
 # fname= ('C:/Users/sakajiri/PycharmProjects/niku/nikuniku-2021-07-15.csv')
 fname = ('C:/xampp/htdocs/niku/ブランド牛の各ページ情報-追加中（重要）.txt')
 f = open(fname, 'r',encoding='utf-8')
@@ -41,9 +51,14 @@ for l_data in data:
     #   break
 
 
+
+
+
 f = open(out_name, 'w', encoding="utf-8")
 f.writelines(brand_count_all)
 f.close()
+
+
 
 
 print("ok")
