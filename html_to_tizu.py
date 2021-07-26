@@ -5,9 +5,9 @@
 ##########
 # ファイル系
 # 元ファイル
-moto_f = 'C:/ACES WEB/SIRIUS/サイト生成先/肉のサイト/brand_beef/index.php'
+moto_f = 'C:/ACES WEB/SIRIUS/サイト生成先/肉のサイト/beef_brand/index.php'
 # 出力ファイル
-saki_f = 'C:/xampp/htdocs/niku/niku-site/brand_beef/index.php'
+saki_f = 'C:/xampp/htdocs/niku/niku-site/beef_brand/index.php'
 # 必要ファイル
 burand_f = 'C:/xampp/htdocs/niku/html_to_nikuniku-20217.txt'
 kenmei_f = 'C:/xampp/htdocs/niku/html_to_県名.txt'
@@ -88,7 +88,7 @@ for l_k_data in k_data:
         if kenmei_nihon in l_data and 'class' not in l_data:
 
             # 置き換えローマ字
-            okikae_ken = 'brand_beef_' + kenmei_roma + '.php'
+            okikae_ken = 'beef_brand_' + kenmei_roma + '.php'
             if (a - 2) > 0:
                 print(kenmei_roma)
                 data[a - 2] = data[a - 2].replace('#', okikae_ken)

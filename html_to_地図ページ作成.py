@@ -5,9 +5,9 @@
 ##########
 # ファイル系
 # 元ファイル
-moto_f = 'C:/ACES WEB/SIRIUS/サイト生成先/肉のサイト/brand_beef/index.php'
+moto_f = 'C:/ACES WEB/SIRIUS/サイト生成先/肉のサイト/beef_brand/index.php'
 # 出力ファイル
-saki_f = 'C:/xampp/htdocs/niku/niku-site/brand_beef/index.php'
+saki_f = 'C:/xampp/htdocs/niku/niku-site/beef_brand/index.php'
 # 必要ファイル
 burand_f = 'C:/xampp/htdocs/niku/ブランド牛の各ページ情報-追加中（重要）.txt'
 #kenmei_f = 'C:/xampp/htdocs/niku/html_to_県名.txt'
@@ -64,7 +64,7 @@ for l_b_data in b_data:
                 okikae_ato = '<p>' + ken1[0] +'('+str(ken_kazu)+ ')</p>'
                 m_data[b] = m_data[b].replace(okikae, okikae_ato)
 
-                okikae_ken = './brand_beef_' + kenmei_roma + '.php'
+                okikae_ken = './beef_brand_' + kenmei_roma + '.php'
                 if (b - 2) > 0:
 
                     #print(kenmei_roma)
