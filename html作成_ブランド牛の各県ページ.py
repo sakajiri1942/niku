@@ -26,6 +26,14 @@ f = open(harituke_f, 'r', encoding="utf-8-sig")
 h_data = f.read()
 f.close()
 
+
+harituke_f = 'C:/xampp/htdocs/niku/貼り付け用日付.php'
+f = open(harituke_f, 'r', encoding="utf-8-sig")
+hh_data = f.read()
+f.close()
+
+
+
 burand_f = 'C:/xampp/htdocs/niku/ブランド牛の各ページ情報-追加中（重要）.txt'
 
 f = open(burand_f, 'r', encoding="utf-8-sig")
@@ -95,16 +103,15 @@ for l_b_data in b_data:
     # 県ごとのファイル
 
     # format_data2_all = format_data2_all + format_data2
-    if '終わり' in b_data[a + 1]:
-        break
 
+    #print(ken_inf[1])
     # 県ごとのファイル
     naiyou = ''
     ken_inf_tugi = b_data[a + 1].split(',')
     if ken_inf[1] not in ken_inf_tugi[1]:
         b = 1
 
-        # print(all_usi)
+        #print(ken_inf[1])
         # 行から単語にわけていく
         gyou_inf = all_usi.split(':')
         # print(gyou_inf)
@@ -146,12 +153,19 @@ for l_b_data in b_data:
         fname_ken_kobetu = 'beef_brand_' + ken_inf[1] + '.php'
         outfile_path_file_kobetu = outfile_path + fname_ken_kobetu
 
+        #日付を挿入
+        hiduke_h = '<article>'+'<?php'+"\n"+hh_data+"\n"+'?>'
+        cpmoto_data2 = cpmoto_data2.replace('<article>',hiduke_h)
+
         f = open(outfile_path_file_kobetu, 'w', encoding="utf-8")
         f.writelines(cpmoto_data2)
         f.close()
 
         all_usi = ''
     naiyou_all = ''
+
+    if '終わり' in b_data[a + 1]:
+        break
     # print(format_data2)
     b = b + 1
     a = a + 1

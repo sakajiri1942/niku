@@ -34,31 +34,27 @@ f.close()
 
 
 
-bui_f = 'C:/xampp/htdocs/niku/元キーワード部位ランキング.txt'
+bui_f = 'C:/xampp/htdocs/niku/元キーワード他肉ランキング.txt'
 
 f = open(bui_f, 'r', encoding="utf-8-sig")
 b_data = f.readlines()
 f.close()
 
-format_ken = 'C:/xampp/htdocs/niku/format_ブランド牛各県ページ作成.php'
-f = open(format_ken, 'r', encoding="utf-8")
-format_data = f.read()
-f.close()
 
-copy_moto = 'C:/ACES WEB/SIRIUS/サイト生成先/肉のサイト/beef_bui/index.php'
+copy_moto = 'C:/ACES WEB/SIRIUS/サイト生成先/肉のサイト/beef_sonota/index.php'
 f = open(copy_moto, 'r', encoding="utf-8")
 cpmoto_data = f.read()
 f.close()
 #beef_bui_〇bui.php
 
-copy_moto_kobetu = 'C:/ACES WEB/SIRIUS/サイト生成先/肉のサイト/beef_bui/beef_bui_〇bui.php'
+copy_moto_kobetu = 'C:/ACES WEB/SIRIUS/サイト生成先/肉のサイト/beef_sonota/beef_sonota_〇niku.php'
 f = open(copy_moto_kobetu, 'r', encoding="utf-8")
 cpmoto_data_kobetu = f.read()
 f.close()
 
 
-outfile_path = 'C:/xampp/htdocs/niku/niku-site/beef_bui/index.php'
-outfile_path_kobetu = 'C:/xampp/htdocs/niku/niku-site/beef_bui/'
+outfile_path = 'C:/xampp/htdocs/niku/niku-site/beef_sonota/index.php'
+outfile_path_kobetu = 'C:/xampp/htdocs/niku/niku-site/beef_sonota/'
 
 a = 0
 b = 1
@@ -85,14 +81,14 @@ for l_b_data in b_data:
     h_data2 = h_data2.replace('i > 3', 'i > 6')
     naiyou_all = naiyou_all + h_data2
     #naiyou_all = '書き換え'
-    naiyou_all = naiyou_all + '<h6><a href=./beef_bui_'+bui_inf[2]+'.php>' + bui_inf[0] + 'のランキングを見る</a></h6>'
+    naiyou_all = naiyou_all + '<h6><a href=./beef_sonota_'+bui_inf[2]+'.php>' + bui_inf[0] + 'のランキングを見る</a></h6>'
 
 
     #####
     #
     #個別ファイルの作成
     cpmoto_data_kobetu2 = cpmoto_data_kobetu
-    cpmoto_data_kobetu2 = cpmoto_data_kobetu2.replace('〇部位', bui_inf[0])
+    cpmoto_data_kobetu2 = cpmoto_data_kobetu2.replace('〇肉', bui_inf[0])
     #上記の変数を流用
     h_data2 = h_data2.replace('i > 6', 'i > 30')
     h_data2 = h_data2.replace('//〇日付', hh_data)
@@ -101,7 +97,7 @@ for l_b_data in b_data:
     h_data2 = h_data2.replace(hari_moto, hari_saki)
     cpmoto_data_kobetu2 = cpmoto_data_kobetu2.replace('〇内容', h_data2)
 
-    outfile_path_kobetu2 = outfile_path_kobetu+'beef_bui_'+bui_inf[2]+'.php'
+    outfile_path_kobetu2 = outfile_path_kobetu+'beef_sonota_'+bui_inf[2]+'.php'
     #print (outfile_path_kobetu2)
     f = open(outfile_path_kobetu2, 'w', encoding="utf-8")
     f.writelines(cpmoto_data_kobetu2)
@@ -111,7 +107,7 @@ for l_b_data in b_data:
 #naiyou_all = naiyou_all.replace('<p>', '')
 #naiyou_all = naiyou_all.replace('</p>', '')
 cpmoto_data2 = cpmoto_data
-cpmoto_data2 = cpmoto_data2.replace('〇牛肉部位', naiyou_all)
+cpmoto_data2 = cpmoto_data2.replace('〇内容', naiyou_all)
 
 f = open(outfile_path, 'w', encoding="utf-8")
 f.writelines(cpmoto_data2)

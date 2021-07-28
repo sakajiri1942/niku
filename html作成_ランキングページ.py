@@ -15,6 +15,13 @@ f = open(rank_n, 'r', encoding="utf-8-sig")
 n_data = f.readlines()  # 一行づつ読み込む
 f.close()
 
+rank_b = 'C:/xampp/htdocs/niku/元キーワード部位ランキング.txt'
+f = open(rank_b, 'r', encoding="utf-8-sig")
+b_data = f.readlines()  # 一行づつ読み込む
+f.close()
+
+
+
 rank_b = 'C:/xampp/htdocs/niku/ブランド牛のランキング.csv'
 f = open(rank_b, 'r', encoding="utf-8-sig")
 r_data = f.readlines()  # 一行づつ読み込む
@@ -95,8 +102,60 @@ for l_r_data in r_data:  # ブランド牛のランキング順ファイル
     if a == 50:
         break
 ### hs_data を使うと、新データに新データを上書きしているだけ。カスケード処理のように、次々にファイルを上書きする必要がある。
-cpmoto_data3 = cpmoto_data2.replace('〇ブランド牛別ランキング', honbun)
+cpmoto_data2 = cpmoto_data2.replace('〇ブランド牛別ランキング', honbun)
+
+#f = open(out_file, 'w', encoding="utf-8")
+#f.writelines(cpmoto_data2)
+#f.close()
+
+
+
+
+######################################################
+#部位別
+#
+#
+# ランキング順に並べなおして配列にいれる
+nagasa = len(b_data)
+rank_b_data = []
+for i in range(nagasa):
+    kazu = i + 1
+
+    # print(kazu)
+    for l_b_data in b_data:
+        bun = l_b_data.split(',')
+        if kazu == int(bun[3]):
+            # print (l_n_data)
+            rank_b_data.append(l_b_data)
+
+
+
+
+# 最終的に張り付ける変数
+honbun = ''
+a = 0
+for l_rank_b_data in rank_b_data:
+    bunkatu = l_rank_b_data.split(',')
+
+    if '終わり' in l_rank_b_data:
+        break
+    # 見出し
+    a = a + 1
+    zyuni = str(a) + '位'
+
+    honbun = honbun + '<h5>' + zyuni + ' ' + bunkatu[0] + '</h5>'
+    harituke_f_cp = harituke_f
+    # 20210722_ranking_豚肉.txt
+
+    okikaefike = '../inf/20*' + bunkatu[0] + '.txt'
+    h_data_cp = h_data
+    h_data_cp = h_data_cp.replace('〇ファイル', okikaefike)
+    #print((okikaefike))
+    honbun = honbun + h_data_cp
+
+
+cpmoto_data2 = cpmoto_data2.replace('〇牛肉部位別ランキング', honbun)
 
 f = open(out_file, 'w', encoding="utf-8")
-f.writelines(cpmoto_data3)
+f.writelines(cpmoto_data2)
 f.close()
