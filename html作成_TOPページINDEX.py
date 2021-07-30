@@ -89,7 +89,7 @@ for l_brand_data in b_data:
 #hh_data
 #hh_data 加工
 l_hh_data = '<?php'+"\n"+hh_data+"\n"+'?>'
-naiyou_all = naiyou_all + '<h6><a href="<% pageDepth %>beef_sonota">その他の肉ページに移動する</a></h6>'
+naiyou_all = naiyou_all + '<h6><a href="./beef_sonota">その他の肉ページに移動する</a></h6>'
 cpmoto_data2 = cpmoto_data
 cpmoto_data2 = cpmoto_data2.replace('〇その他の肉', naiyou_all)
 cpmoto_data2 = cpmoto_data2.replace('〇時間', l_hh_data)
