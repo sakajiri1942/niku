@@ -1,15 +1,9 @@
+import urllib.request
 
-#C:\Users\sakajiri\PycharmProjects\niku\テスト用.text
-# <pre>・月日&#009;：&#009;10/21</pre>
+url = 'https://www.yahoo.co.jp/'
+req = urllib.request.Request(url)
+with urllib.request.urlopen(req) as res:
+    body = res.read().decode("utf-8")
+#list_data2 = body.split('\n')
 
-harituke_f = 'C:/Users/sakajiri/PycharmProjects/niku/テスト用.text'
-f = open(harituke_f, 'r', encoding="utf-8-sig")
-b_data = f.readlines()
-f.close()
-
-for l_b_data in b_data:
-    #print(l_b_data)
-    if '    ' in l_b_data:
-
-        l_b_data = l_b_data.replace('   ','&#009;')
-        print(l_b_data)
+print (body)
